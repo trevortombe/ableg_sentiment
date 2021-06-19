@@ -1,9 +1,22 @@
 ###########################################################
 # Fetches the past 10,000 tweets from #ableg once per day #
 ###########################################################
+
+# Install and load the necessary package
 install.packages("rtweet")
 require(rtweet)
-tl<-search_tweets("#ableg",n=1000)
+
+# Load the Twitter API token. Stored as GitHub secrets.
+your_token <- rtweet::create_token(
+  app = "vaccineplots",
+  consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+  access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
+  access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET"),
+)
+
+# Fetch the latest tweets from #ableg
+tl<-search_tweets("#ableg",n=1000,token=your_token)
 
 # Store the results for later analysis
 filename<-paste0("Files/tweets_",Sys.Date(),".RData")
