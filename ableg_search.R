@@ -17,7 +17,7 @@ your_token <- rtweet::create_token(
 
 # Fetch the latest tweets from #ableg
 # 10k is more than sufficient for a single day. Will need to delete duplicates later when merging.
-tl<-search_tweets("#ableg",n=10000,retryonratelimit=TRUE,token=your_token)
+tl<-search_tweets("#ableg",n=10000,token=your_token)
 
 # Store the results for later analysis
 filename<-paste0("Files/tweets_",Sys.Date(),".RData")
