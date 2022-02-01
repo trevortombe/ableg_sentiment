@@ -1,8 +1,8 @@
 # This Action will fetch tweets and store the data once per day
 name: fetch_tweets
 on:
-  schedule:
-    - cron: '00 14 * * *'
+  #schedule:
+  #  - cron: '00 14 * * *'
   workflow_dispatch:
 jobs:
   build:
